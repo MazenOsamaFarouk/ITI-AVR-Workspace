@@ -1,0 +1,22 @@
+/*
+ * main.c
+ *
+ *  Created on: Nov 30, 2020
+ *      Author: neutr
+ */
+#include "DIO_Interface.h"
+#include "LCD_Interface.h"
+#include <util/delay.h>
+int main(void)
+{
+
+	LCD_voidInit();
+	_delay_ms(200);
+
+	LCD_voidSendData('a');
+	DIO_SetPortValue(2,0x55);
+	while(1)
+	{
+
+	}
+}

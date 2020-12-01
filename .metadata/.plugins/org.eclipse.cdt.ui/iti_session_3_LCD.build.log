@@ -1,0 +1,45 @@
+21:52:58 **** Incremental Build of configuration Release for project iti_session_3_LCD ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+../main.c: In function 'main':
+../main.c:31: warning: unused variable 'line_no'
+../main.c:30: warning: unused variable 'n'
+Finished building: ../main.c
+ 
+Building target: iti_session_3_LCD.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,iti_session_3_LCD.map -mmcu=atmega32 -o "iti_session_3_LCD.elf"  ./LCD/LCD_prog.o  ./DIO/DIO_prog.o  ./main.o   
+Finished building target: iti_session_3_LCD.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S iti_session_3_LCD.elf  >"iti_session_3_LCD.lss"
+Finished building: iti_session_3_LCD.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex iti_session_3_LCD.elf  "iti_session_3_LCD.hex"
+Finished building: iti_session_3_LCD.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex iti_session_3_LCD.elf  "iti_session_3_LCD.eep"
+Finished building: iti_session_3_LCD.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 iti_session_3_LCD.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6080 bytes (18.6% Full)
+(.text + .data + .bootloader)
+
+Data:        264 bytes (12.9% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+21:52:59 Build Finished (took 1s.324ms)
+

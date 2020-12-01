@@ -1,0 +1,17 @@
+/*
+ * main.c
+ *
+ *  Created on: Nov 25, 2020
+ *      Author: mazen
+ */
+#include "LIB/STD_TYPES.h"
+#include "LIB/BIT_MAN.h"
+
+
+
+int main(void)
+{
+
+
+	return 0;
+}

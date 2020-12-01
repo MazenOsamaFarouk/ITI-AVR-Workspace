@@ -1,0 +1,91 @@
+
+iti_hello_avr.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000ac  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   8:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  10:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  14:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  18:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  1c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  20:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  24:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  28:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  2c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  30:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  34:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  38:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  3c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  40:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  44:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  48:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  4c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  50:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+  60:	0e 94 48 00 	call	0x90	; 0x90 <main>
+  64:	0c 94 54 00 	jmp	0xa8	; 0xa8 <_exit>
+
+00000068 <__bad_interrupt>:
+  68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000006c <delay>:
+  6c:	20 e2       	ldi	r18, 0x20	; 32
+  6e:	33 e0       	ldi	r19, 0x03	; 3
+  70:	40 e0       	ldi	r20, 0x00	; 0
+  72:	50 e0       	ldi	r21, 0x00	; 0
+
+00000074 <L_dl17>:
+  74:	e2 2f       	mov	r30, r18
+  76:	f3 2f       	mov	r31, r19
+
+00000078 <L_dl27>:
+  78:	31 97       	sbiw	r30, 0x01	; 1
+  7a:	f1 f7       	brne	.-4      	; 0x78 <L_dl27>
+  7c:	8a 95       	dec	r24
+  7e:	d1 f7       	brne	.-12     	; 0x74 <L_dl17>
+  80:	08 95       	ret
+
+00000082 <delay_Bret>:
+  82:	2b e0       	ldi	r18, 0x0B	; 11
+  84:	33 e6       	ldi	r19, 0x63	; 99
+  86:	3a 95       	dec	r19
+  88:	f1 f7       	brne	.-4      	; 0x86 <delay_Bret+0x4>
+  8a:	2a 95       	dec	r18
+  8c:	e1 f7       	brne	.-8      	; 0x86 <delay_Bret+0x4>
+  8e:	08 95       	ret
+
+00000090 <main>:
+  90:	d0 9a       	sbi	0x1a, 0	; 26
+  92:	91 e0       	ldi	r25, 0x01	; 1
+  94:	8b b3       	in	r24, 0x1b	; 27
+  96:	89 27       	eor	r24, r25
+  98:	8b bb       	out	0x1b, r24	; 27
+  9a:	2b e0       	ldi	r18, 0x0B	; 11
+  9c:	33 e6       	ldi	r19, 0x63	; 99
+  9e:	3a 95       	dec	r19
+  a0:	f1 f7       	brne	.-4      	; 0x9e <main+0xe>
+  a2:	2a 95       	dec	r18
+  a4:	e1 f7       	brne	.-8      	; 0x9e <main+0xe>
+  a6:	f6 cf       	rjmp	.-20     	; 0x94 <main+0x4>
+
+000000a8 <_exit>:
+  a8:	f8 94       	cli
+
+000000aa <__stop_program>:
+  aa:	ff cf       	rjmp	.-2      	; 0xaa <__stop_program>

@@ -1,0 +1,52 @@
+23:05:16 **** Build of configuration Release for project iti_Task_2_LCD ****
+make all 
+Building file: ../LCD/LCD_prog.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"LCD/LCD_prog.d" -MT"LCD/LCD_prog.o" -c -o "LCD/LCD_prog.o" "../LCD/LCD_prog.c"
+Finished building: ../LCD/LCD_prog.c
+ 
+Building file: ../DIO/DIO_prog.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"DIO/DIO_prog.d" -MT"DIO/DIO_prog.o" -c -o "DIO/DIO_prog.o" "../DIO/DIO_prog.c"
+Finished building: ../DIO/DIO_prog.c
+ 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: iti_Task_2_LCD.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,iti_Task_2_LCD.map -mmcu=atmega32 -o "iti_Task_2_LCD.elf"  ./LCD/LCD_prog.o  ./DIO/DIO_prog.o  ./main.o   
+Finished building target: iti_Task_2_LCD.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S iti_Task_2_LCD.elf  >"iti_Task_2_LCD.lss"
+Finished building: iti_Task_2_LCD.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex iti_Task_2_LCD.elf  "iti_Task_2_LCD.hex"
+Finished building: iti_Task_2_LCD.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex iti_Task_2_LCD.elf  "iti_Task_2_LCD.eep"
+Finished building: iti_Task_2_LCD.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 iti_Task_2_LCD.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6196 bytes (18.9% Full)
+(.text + .data + .bootloader)
+
+Data:        270 bytes (13.2% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+23:05:18 Build Finished (took 1s.899ms)
+

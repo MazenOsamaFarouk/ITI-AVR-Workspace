@@ -1,0 +1,20 @@
+18:09:52 **** Incremental Build of configuration Release for project DelayFunction ****
+make all 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 DelayFunction.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:     298 bytes (0.9% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+18:09:53 Build Finished (took 263ms)
+

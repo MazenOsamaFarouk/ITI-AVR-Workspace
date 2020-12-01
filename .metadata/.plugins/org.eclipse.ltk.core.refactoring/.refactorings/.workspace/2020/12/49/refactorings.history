@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;iti_session_3_LCD&apos; to &apos;iti_session_3_4_LCD&apos;" description="Rename resource &apos;iti_session_3_LCD&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/iti_session_3_LCD" name="iti_session_3_4_LCD" stamp="1606812024534" updateReferences="true"/>
+</session>

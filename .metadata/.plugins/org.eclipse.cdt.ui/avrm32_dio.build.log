@@ -1,0 +1,42 @@
+10:13:39 **** Incremental Build of configuration Release for project avrm32_dio ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: avrm32_dio.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,avrm32_dio.map -mmcu=atmega32 -o "avrm32_dio.elf"  ./DIO/DIO_prog.o  ./main.o   
+Finished building target: avrm32_dio.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S avrm32_dio.elf  >"avrm32_dio.lss"
+Finished building: avrm32_dio.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex avrm32_dio.elf  "avrm32_dio.hex"
+Finished building: avrm32_dio.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex avrm32_dio.elf  "avrm32_dio.eep"
+Finished building: avrm32_dio.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 avrm32_dio.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    1028 bytes (3.1% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+10:13:40 Build Finished (took 1s.347ms)
+
