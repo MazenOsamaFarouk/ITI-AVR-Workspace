@@ -1,9 +1,0 @@
-20:31:23 **** Incremental Build of configuration Release for project test_cots ****
-make all 
-Building file: ../dio/dio.c
-Invoking: AVR Compiler
-avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"dio/dio.d" -MT"dio/dio.o" -c -o "dio/dio.o" "../dio/dio.c"
-Command canceled
-
-20:31:24 Build Cancelled (took 1s.79ms)
-
