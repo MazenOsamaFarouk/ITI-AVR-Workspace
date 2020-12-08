@@ -69,9 +69,21 @@ void BUTTON_IsPressed(Button_Type* me)
 
 }
 
-void BUTTON_GetButtonArray(Button_Type b_arr[],u8 port ,u8 no_buttons)
+u8 BUTTON_GetPressedButton(Button_Type b_arr[] ,u8 no_buttons)
 {
+	u8 pressed = 0;
 
+	for(u8 i=0; i<no_buttons; i++)
+	{
+		if(DIO_u8GetPinValue(b_arr[i]->port,b_arr[i]->pin) == b_arr[i]->type)
+		{
+			pressed = i;
+		}
+		while(DIO_u8GetPinValue(b_arr[i]->port,b_arr[i]->pin) == b_arr[i]->type){}
+		_delay_ms(GLOBAL_DEBOUNCE_DELAY);
+	}
+
+return pressed;
 }
 
 

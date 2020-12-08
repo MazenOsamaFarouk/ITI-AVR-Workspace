@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="D:\ITI-3 mon-Minia\ITI-AVR-workspace\KeyPad"/>
 		<item value="D:\ITI-3 mon-Minia\ITI-AVR-workspace\00-LCD\00-LCD\lcd"/>
 		<item value="D:\ITI-3 mon-Minia\ITI-AVR-workspace\DelayFunction"/>
 		<item value="D:\ITI-3 mon-Minia\ITI-AVR-workspace\delay"/>

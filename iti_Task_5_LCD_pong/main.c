@@ -45,6 +45,11 @@
 #define BALL_LEFT  1
 #define BALL_RIGHT 0
 
+#define BTN_LEFT  0
+#define BTN_RIGHT 1
+#define BTN_KICK  2
+
+
 typedef struct
 {
 	u8 pos;
@@ -69,50 +74,47 @@ player_type p_left = {UP,BAT_LEFT,0,left_bat,1}; // left player starts with the 
 player_type p_right = {UP,BAT_RIGHT,0,right_bat,0};
 ball_type the_ball = {7,0,BALL_LEFT,ball}; //ball starts in the middle of the screen
 
-Button_Type b_left;
-Button_Type b_right;
-Button_Type b_kick;
+
+
+Button_Type b_arr[3];
 
 
 
-void move_player(player_type*me, u8 dir)
+
+void move_player(player_type*p, u8 dir)
 {
-	if(me->pos != dir)
+	if(p->pos != dir)
 	{
-		me->pos = dir;
+		p->pos = dir;
 	}
 
 
-	LCD_VidSetCursorPosition(me->side,me->pos);
-}
+	LCD_VidSetCursorPosition(p->side,p->pos);
 
-
-void draw_player(player_type* p)
-{
 	if(p->hasball == 1)
-	{
-		if(p->side == BAT_RIGHT)
 		{
-			p->symbol = right_bat_w_ball;
+			if(p->side == BAT_RIGHT)
+			{
+				p->symbol = right_bat_w_ball;
+			}
+			else if(p->side == BAT_LEFT)
+			{
+				p->symbol = left_bat_w_ball;
+			}
 		}
-		else if(p->side == BAT_LEFT)
+		else
 		{
-			p->symbol = left_bat_w_ball;
-		}
-	}
-	else
-	{
-		if(p->side == BAT_RIGHT)
-		{
-			p->symbol = right_bat;
-		}
-		else if(p->side == BAT_LEFT)
-		{
-			p->symbol = left_bat;
-		}
+			if(p->side == BAT_RIGHT)
+			{
+				p->symbol = right_bat;
+			}
+			else if(p->side == BAT_LEFT)
+			{
+				p->symbol = left_bat;
+			}
 
-	}
-	LCD_VidPrintCustomChar(p->symbol);
+		}
+		LCD_VidPrintCustomChar(p->symbol);
 }
 
 
@@ -143,12 +145,10 @@ void move_ball(ball_type*b, u8 dx, u8 dy)
 		}
 	}
 	LCD_VidSetCursorPosition(b->x,b->y);
-}
-
-void draw_ball(ball_type*b)
-{
 	LCD_VidPrintCustomChar(b->symbol);
 }
+
+
 
 void update_display(void)
 {
@@ -163,9 +163,7 @@ void update_display(void)
 		draw_ball(&the_ball);
 	}
 	move_player(&p_left,p_left.pos);
-	draw_player(&p_left);
 	move_player(&p_right,p_right.pos);
-	draw_player(&p_right);
 
 	// delay
 	_delay_ms(REFRESH_RATE);
@@ -188,9 +186,13 @@ void display_greeting(void)
 int main(void)
 {
 
-	b_kick = BUTTON_Init(PORTD,PIN2,NO,20,1);
-	b_left = BUTTON_Init(PORTD,PIN0,NO,20,1);
-	b_right = BUTTON_Init(PORTD,PIN1,NO,20,1);
+	for(u8 i=0; i<3; i++)
+	{
+		b_arr[i] = BUTTON_Init(PORTD,i,NO,20,1);
+	}
+	Button_Type b_left = b_arr[0];
+	Button_Type b_right = b_arr[1];
+	Button_Type b_kick = b_arr[2];
 	//init..
 	LCD_VidInit();
 
@@ -210,9 +212,9 @@ int main(void)
 
 		do //wait for  player to start the game
 		{
-			BUTTON_IsPressed(&b_kick);
-		}while(b_kick.state == RELEASED);
-		b_kick.state = RELEASED; //reset the  state
+			BUTTON_IsPressed(&b_arr[BTN_KICK]);
+		}while(b_arr[BTN_KICK].state == RELEASED);
+		b_arr[BTN_KICK].state = RELEASED; //reset the  state
 		//		the_ball.x=p_left.side;
 
 
