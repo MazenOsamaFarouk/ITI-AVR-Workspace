@@ -4,8 +4,8 @@
  *  Created on: Jun 12, 2020
  *      Author: mazen
  */
-#include "../LIB/STD_TYPES.h"
-#include "../DIO/DIO_Interface.h"
+
+#include "DIO_Interface.h"
 #include "KEYPAD.h"
 #include <util/delay.h>
 

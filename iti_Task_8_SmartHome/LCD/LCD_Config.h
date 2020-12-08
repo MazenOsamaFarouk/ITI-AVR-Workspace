@@ -17,7 +17,7 @@
 #define RS PIN0
 #define RW PIN1
 #define EN  PIN2
-#define LCD_CTRL_PORT PORTC
+#define LCD_CTRL_PORT PORTD
 #define LCD_DATA_PORT PORTA
 
 

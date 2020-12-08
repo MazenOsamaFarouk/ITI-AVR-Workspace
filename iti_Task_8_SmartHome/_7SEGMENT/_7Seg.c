@@ -7,14 +7,14 @@
 
 
 
-#include "../LIB/STD_TYPES.h"
-#include "../LIB/BIT_CALC.h"
+#include "../STD_TYPES.h"
+#include "../BIT_CALC.h"
 #include "_7Seg.h"
 
 
 
 #if MCU == AVR_ATMEGA32A
-	#include "../DIO/DIO_Interface.h"
+	#include "../DIO_Interface.h"
 #elif MCU == ARM_STM32F10XX
 	#include "DIO_interface.h"
 #endif

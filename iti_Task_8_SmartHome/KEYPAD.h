@@ -9,7 +9,7 @@
 #define KEYPAD_H_
 
 #define KEYPAD_PORT PORTB
-#define DEBOUNCE_DELAY 5
+#define DEBOUNCE_DELAY 10
 #define COLS 4
 #define ROWS 4
 

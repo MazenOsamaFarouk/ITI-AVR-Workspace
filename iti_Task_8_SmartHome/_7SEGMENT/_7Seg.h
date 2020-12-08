@@ -74,7 +74,7 @@ void _7SEG_VidInit(_7Seg* me);
 void _7SEG_VidInit(_7SEG_PIN pin_array[]);
 #endif
 void _7SEG_VidDisplayNum(_7Seg* me,u8 num);
-void _7SEG_VidDisplayVal(u8 value);
+void _7SEG_VidDisplayVal(_7Seg* me,u8 value);
 void _7SEG_VidDisplayOff(_7Seg* me);
 
 

@@ -99,18 +99,106 @@ u8 DIO_u8GetPinValue(u8 LOC_u8Port, u8 LOC_u8Pin )
 	return result;
 }
 
+void DIO_SetPinDirection(u8 LOC_u8PortPin, u8 LOC_u8Mode )
+{
+	u8 LOC_u8Pin = GET_PIN(LOC_u8PortPin);
+	u8 LOC_u8Port= GET_PORT(LOC_u8PortPin);
 
+	if(LOC_u8Mode == 1)
+	{
+		switch(LOC_u8Port)
+		{
+		case 0 : SET_BIT(DDRA,LOC_u8Pin); break;
+		case 1 : SET_BIT(DDRB,LOC_u8Pin); break;
+		case 2 : SET_BIT(DDRC,LOC_u8Pin); break;
+		case 3 : SET_BIT(DDRD,LOC_u8Pin); break;
+		}
+	}
+	else if(LOC_u8Mode == 0)
+	{
+		switch(LOC_u8Port)
+		{
+		case 0 : CLR_BIT(DDRA,LOC_u8Pin); break;
+		case 1 : CLR_BIT(DDRB,LOC_u8Pin); break;
+		case 2 : CLR_BIT(DDRC,LOC_u8Pin); break;
+		case 3 : CLR_BIT(DDRD,LOC_u8Pin); break;
+
+		}
+	}
+}
+void DIO_SetPinValue(u8 LOC_u8PortPin, u8 LOC_u8Value )
+{
+	u8 LOC_u8Pin = GET_PIN(LOC_u8PortPin);
+	u8 LOC_u8Port= GET_PORT(LOC_u8PortPin);
+
+	if(LOC_u8Value == 1)
+	{
+		switch(LOC_u8Port)
+		{
+		case 0 : SET_BIT(PORTA,LOC_u8Pin); break;
+		case 1 : SET_BIT(PORTB,LOC_u8Pin); break;
+		case 2 : SET_BIT(PORTC,LOC_u8Pin); break;
+		case 3 : SET_BIT(PORTD,LOC_u8Pin); break;
+
+		}
+	}
+	else if(LOC_u8Value == 0)
+	{
+		switch(LOC_u8Port)
+		{
+		case 0 : CLR_BIT(PORTA,LOC_u8Pin); break;
+		case 1 : CLR_BIT(PORTB,LOC_u8Pin); break;
+		case 2 : CLR_BIT(PORTC,LOC_u8Pin); break;
+		case 3 : CLR_BIT(PORTD,LOC_u8Pin); break;
+
+		}
+
+	}
+
+}
+void DIO_TogPinValue(u8 LOC_u8PortPin)
+{
+	u8 LOC_u8Pin = GET_PIN(LOC_u8PortPin);
+	u8 LOC_u8Port= GET_PORT(LOC_u8PortPin);
+	switch(LOC_u8Port)
+	{
+		case 0 : TOG_BIT(PORTA,LOC_u8Pin); break;
+		case 1 : TOG_BIT(PORTB,LOC_u8Pin); break;
+		case 2 : TOG_BIT(PORTC,LOC_u8Pin); break;
+		case 3 : TOG_BIT(PORTD,LOC_u8Pin); break;
+
+	}
+}
+u8 DIO_GetPinValue(u8 LOC_u8PortPin )
+{
+	u8 LOC_u8Pin = GET_PIN(LOC_u8PortPin);
+	u8 LOC_u8Port= GET_PORT(LOC_u8PortPin);
+	u8 result = 0;
+		switch(LOC_u8Port)
+		{
+		case 0: result = GET_BIT(PINA,LOC_u8Pin) ; break ;
+
+		case 1: result = GET_BIT(PINB,LOC_u8Pin) ; break ;
+
+		case 2: result = GET_BIT(PINC,LOC_u8Pin) ; break ;
+
+		case 3: result = GET_BIT(PIND,LOC_u8Pin) ; break ;
+
+		}
+
+		return result;
+}
 
 void DIO_VidSetPortDirection(u8 LOC_u8Port,  u8 LOC_u8Mode )
 {
 	switch(LOC_u8Port)
-			{
-			case 0 : DDRA = LOC_u8Mode;  break;
-			case 1 : DDRB = LOC_u8Mode; break;
-			case 2 : DDRC = LOC_u8Mode; break;
-			case 3 : DDRD = LOC_u8Mode; break;
+	{
+	case 0 : DDRA = LOC_u8Mode;  break;
+	case 1 : DDRB = LOC_u8Mode; break;
+	case 2 : DDRC = LOC_u8Mode; break;
+	case 3 : DDRD = LOC_u8Mode; break;
 
-			}
+	}
 
 }
 
@@ -119,10 +207,10 @@ void DIO_VidSetPortValue(u8 LOC_u8Port, u8 LOC_u8Value )
 {
 	switch(LOC_u8Port)
 	{
-		case 0 : PORTA = LOC_u8Value;  break;
-		case 1 : PORTB = LOC_u8Value; break;
-		case 2 : PORTC = LOC_u8Value; break;
-		case 3 : PORTD = LOC_u8Value; break;
+	case 0 : PORTA = LOC_u8Value;  break;
+	case 1 : PORTB = LOC_u8Value; break;
+	case 2 : PORTC = LOC_u8Value; break;
+	case 3 : PORTD = LOC_u8Value; break;
 
 	}
 
@@ -154,19 +242,19 @@ void DIO_VidInsPortValue(u8 LOC_u8Port,u8 LOC_u8Value, u8 LOC_u8No_bits, u8 LOC_
 u8 DIO_u8GetPortValue(u8 LOC_u8Port)
 {
 	u8 result = 0;
-		switch(LOC_u8Port)
-		{
-		case 0: result=PINA; break ;
+	switch(LOC_u8Port)
+	{
+	case 0: result=PINA; break ;
 
-		case 1: result=PINB; break ;
+	case 1: result=PINB; break ;
 
-		case 2: result=PINC; break ;
+	case 2: result=PINC; break ;
 
-		case 3: result=PIND; break ;
+	case 3: result=PIND; break ;
 
-		}
+	}
 
-		return result;
+	return result;
 
 }
 

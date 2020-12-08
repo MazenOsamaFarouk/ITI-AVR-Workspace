@@ -7,13 +7,13 @@
 #include <string.h>
 #include <util/delay.h>
 
-#include "../DIO/DIO_Interface.h"
+#include "../DIO_Interface.h"
 #include "LCD_Interface.h"
 #include "LCD_Config.h"
 
 
 // helping functions
-void reverse(char s[])
+void my_reverse(char s[])
  {
      s32 i, j;
      char c;
@@ -38,7 +38,7 @@ void reverse(char s[])
      if (sign < 0)
          s[i++] = '-';
      s[i] = '\0';
-     reverse(s);
+     my_reverse(s);
  }
 
 
