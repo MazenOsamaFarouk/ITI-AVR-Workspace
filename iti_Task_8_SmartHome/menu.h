@@ -12,7 +12,6 @@
 
 typedef struct
 {
-
 	u8 x;
 	u8 y;
 	void (*CallBack)(void);

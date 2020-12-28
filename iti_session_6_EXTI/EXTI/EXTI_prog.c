@@ -20,6 +20,7 @@ static void (*Global_INT1_CBFunc)(void)=NULL;
 static void (*Global_INT2_CBFunc)(void)=NULL;
 
 
+
 void EXTI_init(void)
 {
 	// 1. select trigger mode in MCUCR

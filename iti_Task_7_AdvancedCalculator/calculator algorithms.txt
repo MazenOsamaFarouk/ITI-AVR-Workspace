@@ -1,0 +1,16 @@
+infix to postfix conversion algorithm
+https://www.includehelp.com/c/infix-to-postfix-conversion-using-stack-with-c-program.aspx 
+
+video:
+https://youtu.be/PAceaOSnxQs 
+
+postfix evaluation algorithm
+https://www.thecrazyprogrammer.com/2014/02/c-program-and-algorithm-for-evaluation-of-a-postfix-expression.html#:~:text=Algorithm%20for%20Evaluation%20of%20Postfix%20Expression&text=If%20the%20element%20is%20an,stack%20is%20the%20final%20answer.
+
+video:
+https://youtu.be/u3paQa8KXu0 
+
+source code:
+https://drive.google.com/file/d/1-xJf463Gyoz2MVwdaZxQF8pCEj42bCtL/view?usp=sharing 
+
+
